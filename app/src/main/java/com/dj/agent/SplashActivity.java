@@ -16,7 +16,7 @@ public class SplashActivity extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences("PREFERENCE", Activity.MODE_PRIVATE);
         String a =  pref.getString("key01", String.valueOf(0));
 
-        File file = new File("/data/data/Agent1.com/shared_prefs/PREFERENCE.xml");
+        File file = new File("/data/data/com.dj.agent/shared_prefs/PREFERENCE.xml");
         if (file.exists()){
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);

@@ -34,13 +34,13 @@ public class money extends Activity {
         d=306130;
     }
     public void button2(View v){
-        d=331296;
+        d=331300;
     }
     public void button3(View v){
-        d=366229;
+        d=366200;
     }
     public void button4(View v){
-        d=412832;
+        d=405700;
     }
 
 

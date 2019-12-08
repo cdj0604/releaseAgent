@@ -27,7 +27,7 @@ public class main extends AppCompatActivity {
 
     TextView textView;
     TextView textView1;
-    TextView textView2;
+    TextView textView6;
     TextView textViewp;
     TextView check;
     TextView bm;
@@ -47,52 +47,57 @@ public class main extends AppCompatActivity {
         textView = (TextView)findViewById(R.id.textview);
         textView1 = (TextView)findViewById(R.id.textview1);
         textViewp = (TextView)findViewById(R.id.TextViewp);
+        textView6 = (TextView)findViewById(R.id.textview6);
         bm = (TextView)findViewById(R.id.bm);
+
         /* 오늘 날짜 구하기 */
         calendar=Calendar.getInstance();
         tYear=calendar.get(Calendar.YEAR);
         tMonth=calendar.get(Calendar.MONTH);
         tDay=calendar.get(Calendar.DAY_OF_MONTH);
-
         today=calendar.getTimeInMillis()/(24*60*60*1000);
         int r1 = (int)(long) today;// 현재날짜 int로 변환
-       /* String c = Integer.toString(r1);
-        check.setText(c);*/
-        //-------------------------------------------------------------------------------------
-        //소집해재날 가져오기
+
+        //--------------------남은 복무일수 계산-------------------------------------------------
+
         SharedPreferences pref1 = getSharedPreferences("PREFERENCE2",Activity.MODE_PRIVATE);
         String b = pref1.getString("key02",String.valueOf(0));//b에 소집해제 정수값으로받아옴
         Log.d("날짜값",b);
         int Finishr = Integer.parseInt(b); //Finishr==소집해제 선택날 (r-현재) /b값을 디데이 계산을위해 인트로 변환
-        int result = Finishr-r1;
-
+        int result = Finishr-r1; // result = 남은날
         String result1 = Integer.toString(result); //텍스트뷰에 넣기위해 결과값 스트링으로 변환
         textView1.setText(result1);
-        //소집해재날 가져오기
+
+        //--------------------소집해제 날짜 출력-------------------------------------------------
+
         SharedPreferences date = getSharedPreferences("date", Activity.MODE_PRIVATE);
         String getdate = date.getString("date", "");
         bm.setText(getdate);
 
-        //입소날 가져오기
+        //--------------------현재 복무일수 계산-------------------------------------------------
+
         SharedPreferences pref = getSharedPreferences("PREFERENCE", Activity.MODE_PRIVATE);
         String a =  pref.getString("key01", String.valueOf(0));
         int Startr = Integer.parseInt(a);
-        int Startresult = r1 - Startr+1;
-
+        int Startresult = r1 - Startr+1; //현재 복무일수
         String Startresult1 = Integer.toString(Startresult);//텍스트뷰에 넣기위해 결과값 스트링으로 변환
-        textView.setText( Startresult1); //현재까지 총 복무일수 text
+        textView.setText( Startresult1); //현재 복무일수 text
 
-        // int p = Integer.parseInt(a);
-        int percent = (int) ((double) Startresult / (double) 666 * 100.0);
+        //--------------------전체 복무일수 계산-------------------------------------------------
 
+        int allday = Finishr -Startr + 1 ; //allday = 전체 복무일수
+        String Stringallday = Integer.toString(allday);
+        textView6.setText(Stringallday);
+
+        //---------------------프로그래스바 퍼센트 계산 ---------------------------------------------
+
+        int percent = (int) ((double) Startresult / (double) allday * 100.0);
         String pp = Integer.toString(percent);
-
         textViewp.setText(pp+"/100(%)" );
-
         setPreference("key03",pp);
         setPreference("key04",result1); //디데이
 
-
+        //---------------------프로그래스 바------------------------------
         try {
             // 문자열을 숫자로 변환.
             int value = Integer.parseInt(pp);
@@ -101,10 +106,6 @@ public class main extends AppCompatActivity {
             progress.setProgress(value) ;
 
         } catch (Exception e) {
-            // 토스트(Toast) 메시지 표시.
-            Toast toast = Toast.makeText(main.this, "Invalid number format",
-                    Toast.LENGTH_SHORT);
-            toast.show();
         }
         //-------------------------알림생성---------------------------
         String channelId = "channel";
