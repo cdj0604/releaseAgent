@@ -29,25 +29,36 @@ public class MainActivity extends TabActivity{ // 상속이 TabActivity이다. �
         ImageView tabwidget02 = new ImageView(this);
         tabwidget02.setImageResource(R.drawable.tab_02);
 
-
         ImageView tabwidget03 = new ImageView(this);
-        tabwidget03.setImageResource(R.drawable.tab_03);
+        tabwidget03.setImageResource(R.drawable.four);
 
+        ImageView tabwidget04 = new ImageView(this);
+        tabwidget04.setImageResource(R.drawable.tab_03);
+
+        //복무현황 탭 만들기
         Intent intent = new Intent().setClass(this, main.class);
         spec = tabHost.newTabSpec("main").setIndicator(tabwidget01).setContent(intent);
         tabHost.addTab(spec);
 
-        //세번째 탭 만들기
+        //월급계산 탭 만들기
         intent = new Intent().setClass(this, money.class);
 
         spec = tabHost.newTabSpec("money").setIndicator(tabwidget02).setContent(intent);
         tabHost.addTab(spec);
 
-        //두번째 탭 만들기
-        intent = new Intent().setClass(this, setting.class);
+        //sns 탭 만들기
+        intent = new Intent().setClass(this, infor.class);
 
         spec = tabHost.newTabSpec("setting").setIndicator(tabwidget03).setContent(intent);
         tabHost.addTab(spec);
+
+        //설정 탭 만들기
+        intent = new Intent().setClass(this, setting.class);
+
+        spec = tabHost.newTabSpec("setting").setIndicator(tabwidget04).setContent(intent);
+        tabHost.addTab(spec);
+
+
 
 
         //처음 앱 실행시 탭 활성화 지정하기

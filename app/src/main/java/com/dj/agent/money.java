@@ -49,7 +49,6 @@ public class money extends Activity {
         TextView result = (TextView) findViewById(R.id.textView3);//월급보여주기
 
         SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
-
         String eat = pref.getString("insert_eat", "");
         String bus = pref.getString("insert_bus", "");
         String getinput1 = input1.getText().toString();//출근일수입력

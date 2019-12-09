@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.agent">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_g"
@@ -27,6 +29,17 @@
         <activity android:name="com.dj.agent.finishday"></activity>
         <activity android:name="com.dj.agent.money"></activity>
         <activity android:name="com.dj.agent.insert"></activity>
+        <activity android:name="com.dj.agent.infor"></activity>
+        <activity android:name="com.dj.agent.infor_1"></activity>
+        <activity android:name="com.dj.agent.infor_2"></activity>
+        <activity android:name="com.dj.agent.infor_3"></activity>
+        <activity android:name="com.dj.agent.infor_4"></activity>
+        <activity android:name="com.dj.agent.infor_5"></activity>
+
+
+
+
+
     </application>
 
 </manifest>

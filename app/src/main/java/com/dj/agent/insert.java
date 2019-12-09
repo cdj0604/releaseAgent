@@ -33,10 +33,7 @@ public class insert extends Activity {
 
                 if (geteat.getBytes().length<=0){
                     Toast.makeText(getApplicationContext(), "식비,교통비를 정확히 입력해주세요.", Toast.LENGTH_SHORT).show();
-
                 }
-
-
                 else {
                     //SharedPreferences에 각 아이디를 지정하고 EditText 내용을 저장한다.
                     editor.putString("insert_eat", eat.getText().toString());

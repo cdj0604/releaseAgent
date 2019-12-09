@@ -97,6 +97,14 @@ public class main extends AppCompatActivity {
         setPreference("key03",pp);
         setPreference("key04",result1); //디데이
 
+        //----------------------------------------------------------------
+
+        SharedPreferences pref2 = getSharedPreferences("widget", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref2.edit();
+        editor.putString("dday", result1);
+        //editor.putString("insert_bus", bus.getText().toString());
+        // TODO : 필수 없으면 저장안됨
+        editor.commit();
         //---------------------프로그래스 바------------------------------
         try {
             // 문자열을 숫자로 변환.
